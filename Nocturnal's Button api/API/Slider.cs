@@ -8,8 +8,8 @@ namespace Nocturnal.Apis.qm
     {
         private GameObject _SliderGameobject { get; set; }
         private UnityEngine.UI.Slider _SliderComponent { get; set; }
-        private Text _TextGameobj { get; set; }
-        private Text _TextGameobj2 { get; set; }
+        private Text s_textGameobj { get; set; }
+        private Text s_textGameobj2 { get; set; }
 
         private Transform Path { get; set; }
 
@@ -17,7 +17,7 @@ namespace Nocturnal.Apis.qm
         {
             this._SliderGameobject = null;
             this._SliderComponent = null;
-            this._TextGameobj2 = null;
+            this.s_textGameobj2 = null;
         }
 
         public Slider(out GameObject instance, GameObject parent, Action<float> setOutput, float prevolume = 876.412f, Action todo = null, string title = "")
@@ -40,12 +40,12 @@ namespace Nocturnal.Apis.qm
                 _SliderComponent.value = (float)prevolume;
             _SliderComponent.onValueChanged.RemoveAllListeners();
             _SliderComponent.m_OnValueChanged.RemoveAllListeners();
-            _TextGameobj = _SliderGameobject.transform.Find("SliderLabel").GetComponent<Text>();
-            _TextGameobj.text = $"{prevolume * 100}%";
+            s_textGameobj = _SliderGameobject.transform.Find("SliderLabel").GetComponent<Text>();
+            s_textGameobj.text = $"{prevolume * 100}%";
             _SliderComponent.onValueChanged.AddListener((UnityEngine.Events.UnityAction<float>)sliderstuff);
             void sliderstuff(float values)
             {
-                _TextGameobj.text = $"{values * 100}%";
+                s_textGameobj.text = $"{values * 100}%";
                 setOutput(values);
                 if (todo != null)
                     todo.Invoke();
@@ -53,10 +53,10 @@ namespace Nocturnal.Apis.qm
             instance = _SliderGameobject;
             _SliderGameobject.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(440, 70);
             _SliderGameobject.transform.Find("SliderLabel").transform.localScale = new Vector3(1.1f, 1.1f, 1);
-            _TextGameobj2 = GameObject.Instantiate(_TextGameobj.gameObject, _TextGameobj.transform.parent).gameObject.GetComponent<Text>();
-            _TextGameobj2.text = title;
-            _TextGameobj2.horizontalOverflow = HorizontalWrapMode.Overflow;
-            _TextGameobj2.transform.localPosition = new Vector3(225, -15, 1);
+            s_textGameobj2 = GameObject.Instantiate(s_textGameobj.gameObject, s_textGameobj.transform.parent).gameObject.GetComponent<Text>();
+            s_textGameobj2.text = title;
+            s_textGameobj2.horizontalOverflow = HorizontalWrapMode.Overflow;
+            s_textGameobj2.transform.localPosition = new Vector3(225, -15, 1);
             _SliderGameobject.transform.localPosition = new Vector3(-110, -18, 1);
         }
 
@@ -82,22 +82,22 @@ namespace Nocturnal.Apis.qm
                 _SliderComponent.value = (float)prevolume;
             _SliderComponent.onValueChanged.RemoveAllListeners();
             _SliderComponent.m_OnValueChanged.RemoveAllListeners();
-            _TextGameobj = _SliderGameobject.transform.Find("SliderLabel").GetComponent<Text>();
-            _TextGameobj.text = $"{prevolume * 100}%";
+            s_textGameobj = _SliderGameobject.transform.Find("SliderLabel").GetComponent<Text>();
+            s_textGameobj.text = $"{prevolume * 100}%";
             _SliderComponent.onValueChanged.AddListener((UnityEngine.Events.UnityAction<float>)sliderstuff);
             void sliderstuff(float values)
             {
-                _TextGameobj.text = $"{values * 100}%";
+                s_textGameobj.text = $"{values * 100}%";
                 setOutput(values);
                 if (todo != null)
                     todo.Invoke();
             }
             _SliderGameobject.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(440, 70);
             _SliderGameobject.transform.Find("SliderLabel").transform.localScale = new Vector3(1.1f, 1.1f, 1);
-            _TextGameobj2 = GameObject.Instantiate(_TextGameobj.gameObject, _TextGameobj.transform.parent).gameObject.GetComponent<Text>();
-            _TextGameobj2.text = title;
-            _TextGameobj2.horizontalOverflow = HorizontalWrapMode.Overflow;
-            _TextGameobj2.transform.localPosition = new Vector3(225, -15, 1);
+            s_textGameobj2 = GameObject.Instantiate(s_textGameobj.gameObject, s_textGameobj.transform.parent).gameObject.GetComponent<Text>();
+            s_textGameobj2.text = title;
+            s_textGameobj2.horizontalOverflow = HorizontalWrapMode.Overflow;
+            s_textGameobj2.transform.localPosition = new Vector3(225, -15, 1);
             _SliderGameobject.transform.localPosition = new Vector3(-110, -18, 1);
         }
 

@@ -10,14 +10,14 @@ namespace Nocturnal.Apis.qm
         public Page(string menuname,byte[] image = null)
         {
           MenuName = "Menu_" + menuname;
-          GameObject instanciated = GameObject.Instantiate(Misc._Page, Misc._Page.transform.parent);
-          instanciated.name = $"_Page_{menuname}";
+          GameObject instanciated = GameObject.Instantiate(Misc.s_page, Misc.s_page.transform.parent);
+          instanciated.name = $"s_page_{menuname}";
           instanciated.transform.rotation = new Quaternion(0, 0, 0, 0);
           Button btn = instanciated.GetComponent<Button>();
           btn.onClick.RemoveAllListeners();
           instanciated.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = menuname;
           VRC.UI.Elements.Controls.MenuTab tab = instanciated.GetComponent<VRC.UI.Elements.Controls.MenuTab>();
-          GameObject newmenu = GameObject.Instantiate(Misc._Submenu, Misc._Submenu.transform.parent);
+          GameObject newmenu = GameObject.Instantiate(Misc.s_submenu, Misc.s_submenu.transform.parent);
             newmenu.name = MenuName;
            var devtools = newmenu.GetComponent<VRC.UI.Elements.Menus.DevMenu>();
           devtools.field_Public_String_0 = "QuickMenu" + menuname;

@@ -9,14 +9,14 @@ namespace Nocturnal.Apis.qm
 {
     internal class submenu
     {
-        internal static List<GameObject> submenuslist = new List<GameObject>();
+        internal static List<GameObject> s_submenusList = new List<GameObject>();
 
         internal static GameObject Create(string text, GameObject indexer = null,bool selfaling = false)
         {
             GameObject gam = new GameObject();
             gam.AddComponent<CanvasGroup>();
-            gam.name = $"_Submenu_{text}";
-            gam.transform.parent = Misc._Submenu.transform.parent.transform.Find(Page.MenuName).transform;
+            gam.name = $"s_submenu_{text}";
+            gam.transform.parent = Misc.s_submenu.transform.parent.transform.Find(Page.MenuName).transform;
             gam.SetActive(false);
             var mask = new GameObject();
             mask.transform.parent = gam.transform;
@@ -26,10 +26,10 @@ namespace Nocturnal.Apis.qm
             mask.transform.localPosition = new Vector3(0f, -554.4909f, 0);
             mask.transform.localRotation = new Quaternion(0, 0, 0, 0);
             mask.name = "Masked";
-            var instanciateds = GameObject.Instantiate(Misc._Submenu.transform.Find("Header_DevTools").gameObject, gam.transform);
+            var instanciateds = GameObject.Instantiate(Misc.s_submenu.transform.Find("Header_DevTools").gameObject, gam.transform);
             instanciateds.transform.Find("LeftItemContainer/Text_Title").GetComponent<TMPro.TextMeshProUGUI>().text = text;
             instanciateds.transform.localPosition = new Vector3(-514, 0, 0);
-            var instanciated = GameObject.Instantiate(Misc._Submenu.transform.Find("Scrollrect").gameObject, mask.transform);
+            GameObject instanciated = GameObject.Instantiate(Misc.s_submenu.transform.Find("Scrollrect").gameObject, mask.transform);
             instanciated.transform.localPosition = new Vector3(0, 50, 0);
             instanciated.transform.localScale = new Vector3(0.095f, 0.11f, 1f);
             instanciated.gameObject.SetActive(true);
@@ -39,7 +39,7 @@ namespace Nocturnal.Apis.qm
             gam.transform.localPosition = new Vector3(0, 512, 0);
             GameObject LayoutGrop = instanciated.transform.Find("Viewport/VerticalLayoutGroup").gameObject;
             GameObject.DestroyImmediate(LayoutGrop.transform.Find("Buttons").gameObject);
-            submenuslist.Add(gam.gameObject);
+            s_submenusList.Add(gam.gameObject);
 
             if (indexer != null)
             {
@@ -50,7 +50,7 @@ namespace Nocturnal.Apis.qm
                 buttoni.onClick.RemoveAllListeners();
                 buttoni.onClick.AddListener(new Action(() =>
                 {
-                    GameObject[] submenus = submenuslist.Where(x => x != indexer).ToArray();
+                    GameObject[] submenus = s_submenusList.Where(x => x != indexer).ToArray();
                     for (int i = 0; i < submenus.Length; i++)
                         submenus[i].SetActive(false);
                     indexer.SetActive(true);

@@ -6,33 +6,33 @@ namespace Nocturnal.Apis.qm
 {
     internal class SmallButton
     {
-        private GameObject _ButtonGameobject { get; set; }
-        private Button _ButtonComponent { get; set; }
-        private Transform _ButtonIcon { get; set; }
+        private GameObject sss_buttonGameObject { get; set; }
+        private Button sss_buttonComponent { get; set; }
+        private Transform ss_buttonIcon { get; set; }
         ~SmallButton()
         {
-            this._ButtonGameobject = null;
-            this._ButtonComponent = null;
-            this._ButtonIcon = null;
+            this.sss_buttonGameObject = null;
+            this.sss_buttonComponent = null;
+            this.ss_buttonIcon = null;
         }
         public SmallButton(out GameObject instance,GameObject path, Action action, string img = null)
         {
-            _ButtonGameobject = GameObject.Instantiate(Misc._ButtonPrefab, path.transform);
-            _ButtonGameobject.transform.Find("Text_H4").gameObject.SetActive(false);
-            _ButtonGameobject.name = "_Button_Small";
-            _ButtonComponent = _ButtonGameobject.gameObject.GetComponent<UnityEngine.UI.Button>();
-            _ButtonComponent.onClick.RemoveAllListeners();
-            _ButtonComponent.onClick.AddListener(action);
-            _ButtonGameobject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().enabled = false;
-            _ButtonGameobject.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-98, -76);
-            _ButtonIcon = _ButtonGameobject.transform.Find("Icon");
-            _ButtonIcon.localScale = new Vector3(0.9f, 0.9f, 1);
-            _ButtonIcon.localPosition = new Vector3(0, 35, 0);
-            instance = _ButtonGameobject;
+            sss_buttonGameObject = GameObject.Instantiate(Misc.s_buttonPrefab, path.transform);
+            sss_buttonGameObject.transform.Find("Text_H4").gameObject.SetActive(false);
+            sss_buttonGameObject.name = "_Button_Small";
+            sss_buttonComponent = sss_buttonGameObject.gameObject.GetComponent<UnityEngine.UI.Button>();
+            sss_buttonComponent.onClick.RemoveAllListeners();
+            sss_buttonComponent.onClick.AddListener(action);
+            sss_buttonGameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().enabled = false;
+            sss_buttonGameObject.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-98, -76);
+            ss_buttonIcon = sss_buttonGameObject.transform.Find("Icon");
+            ss_buttonIcon.localScale = new Vector3(0.9f, 0.9f, 1);
+            ss_buttonIcon.localPosition = new Vector3(0, 35, 0);
+            instance = sss_buttonGameObject;
             if (img == null) return;
-            Component.DestroyImmediate(_ButtonGameobject.transform.Find("Icon").GetComponent<VRC.UI.Core.Styles.StyleElement>());
-            _ButtonIcon.gameObject.Loadfrombytes(img);
-            _ButtonIcon.gameObject.GetComponent<UnityEngine.UI.Image>().color = new Color(0.415f, 0.89f, 0.976f, 1);
+            Component.DestroyImmediate(sss_buttonGameObject.transform.Find("Icon").GetComponent<VRC.UI.Core.Styles.StyleElement>());
+            ss_buttonIcon.gameObject.Loadfrombytes(img);
+            ss_buttonIcon.gameObject.GetComponent<UnityEngine.UI.Image>().color = new Color(0.415f, 0.89f, 0.976f, 1);
         }
 
 

@@ -348,15 +348,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\Button.cs" />
-    <Compile Include="API\Minibuttn.cs" />
+    <Compile Include="API\MiniButtn.cs" />
     <Compile Include="API\Misc.cs" />
     <Compile Include="API\Page.cs" />
     <Compile Include="API\ScrollBar.cs" />
     <Compile Include="API\Slider.cs" />
-    <Compile Include="API\smallbutton.cs" />
+    <Compile Include="API\SmallButton.cs" />
     <Compile Include="API\Submenu.cs" />
     <Compile Include="API\Submenubutton.cs" />
     <Compile Include="API\Toggle.cs" />
+    <Compile Include="API\XRefs.cs" />
     <Compile Include="Example\Create.cs" />
     <Compile Include="Example\Download Images.cs" />
     <Compile Include="Example\Generate Buttons.cs" />
@@ -366,6 +367,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-    </PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

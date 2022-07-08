@@ -26,6 +26,7 @@ namespace Nocturnal.Apis.qm.Example
             MelonLogger.Msg("Generating Menu");
 
             Misc.GetPrefabs();
+            Apis.qm.API.XRefs.SetMethods();
             //After we got the Objects we can create the buttons.
             new GenerateButtons();
             yield break;

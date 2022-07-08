@@ -3,30 +3,30 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace Nocturnal.Apis.qm
 {
-    internal  class Minibuttn
+    internal  class MiniButtn
     {
-        private GameObject _ButtonGameobject { get; set; }
-        private Button _ButtonComponent { get; set; }
-        private GameObject _ButtonIcon { get; set; }
+        private GameObject ss_buttonGameObject { get; set; }
+        private Button ss_buttonComponent { get; set; }
+        private GameObject s_buttonIcon { get; set; }
 
-        ~Minibuttn()
+        ~MiniButtn()
         {
-            this._ButtonGameobject = null;
-            this._ButtonComponent = null;
-            this._ButtonIcon = null;
+            this.ss_buttonGameObject = null;
+            this.ss_buttonComponent = null;
+            this.s_buttonIcon = null;
         }
-        public Minibuttn(GameObject path, string text, Action action, byte[] icon)
+        public MiniButtn(GameObject path, string text, Action action, byte[] icon)
         {
-            _ButtonGameobject = GameObject.Instantiate(Misc._QMexpand, path.transform);
-            _ButtonComponent = _ButtonGameobject.gameObject.GetComponent<Button>();
-            Component.DestroyImmediate(_ButtonGameobject.GetComponent<VRC.DataModel.Core.BindingComponent>());
-            _ButtonComponent.onClick.RemoveAllListeners();
-            _ButtonComponent.onClick.AddListener(action);
-            _ButtonIcon = _ButtonGameobject.transform.Find("Icon").gameObject;
-            Component.DestroyImmediate(_ButtonIcon.GetComponent<VRC.UI.Core.Styles.StyleElement>());
-            _ButtonIcon.Loadfrombytes(icon);
-            _ButtonGameobject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = text;
-            _ButtonIcon.gameObject.GetComponent<Image>().color = new Color(0.415f, 0.89f, 0.976f, 1);
+            ss_buttonGameObject = GameObject.Instantiate(Misc.s_qmExpand, path.transform);
+            ss_buttonComponent = ss_buttonGameObject.gameObject.GetComponent<Button>();
+            Component.DestroyImmediate(ss_buttonGameObject.GetComponent<VRC.DataModel.Core.BindingComponent>());
+            ss_buttonComponent.onClick.RemoveAllListeners();
+            ss_buttonComponent.onClick.AddListener(action);
+            s_buttonIcon = ss_buttonGameObject.transform.Find("Icon").gameObject;
+            Component.DestroyImmediate(s_buttonIcon.GetComponent<VRC.UI.Core.Styles.StyleElement>());
+            s_buttonIcon.Loadfrombytes(icon);
+            ss_buttonGameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = text;
+            s_buttonIcon.gameObject.GetComponent<Image>().color = new Color(0.415f, 0.89f, 0.976f, 1);
         }
       
     }

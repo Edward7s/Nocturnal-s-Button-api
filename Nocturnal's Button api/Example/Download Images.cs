@@ -3,7 +3,7 @@ namespace Nocturnal.Apis.qm.Example
 {
     internal class Download_Images
     {
-        internal static byte[] _PageIcon { get; set; }
+        internal static byte[] s_pageIcon { get; set; }
         internal static byte[] _ClipBoardIcon { get; set; }
         internal static byte[] _WorldIcon { get; set; }
 
@@ -15,7 +15,7 @@ namespace Nocturnal.Apis.qm.Example
             using (var webclient = new WebClient())
             {
                 //Here we storing the Data(Byte array) into some static props.
-                _PageIcon = webclient.DownloadData("https://nocturnal-client.xyz/Resources/Nocturnal%20logo.png");
+                s_pageIcon = webclient.DownloadData("https://nocturnal-client.xyz/Resources/Nocturnal%20logo.png");
 
                 _ClipBoardIcon = webclient.DownloadData("https://nocturnal-client.xyz/Resources/icons/clipboard.png");
 
